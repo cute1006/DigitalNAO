@@ -8,7 +8,7 @@ console.log("".concat(cadena), "la suma es: ".concat(sum));
 var flag = false;
 var yes = true;
 var no = false;
-if (flag) {
+if (!flag) {
     console.log("sol");
 }
-//# sourceMappingURL=main.js.map
+//# sourceMappingURL=tipo_datos.js.map

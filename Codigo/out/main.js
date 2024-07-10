@@ -1,8 +1,7 @@
-var cadena = "hola2";
+var cadena = "Hola";
 var uno = 10;
 var dos = 20;
 var sum;
 sum = uno + dos;
-/*let  prueba :  string = "hola"*/
-console.log("numero: ".concat(sum));
+console.log("".concat(cadena), "la suma es: ".concat(sum));
 //# sourceMappingURL=main.js.map

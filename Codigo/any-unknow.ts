@@ -1,3 +1,4 @@
+//en este primer archivo de codigo se visualiza el tipo de dato any 
 let randomValue :any = 10;
 randomValue = 'Mateo';   // OK
 randomValue = true;      // OK

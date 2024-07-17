@@ -12,6 +12,18 @@ let BooksService = class BooksService {
     findAll() {
         return 'funcionando';
     }
+    findBook(bookId) {
+        return `findBook funcionando con bookId: ${bookId}`;
+    }
+    ObtenerNombre(nombre) {
+        return `El nombre es: ${nombre}`;
+    }
+    sort(id) {
+        return `El id es: ${id}`;
+    }
+    createBook(newBook) {
+        return newBook;
+    }
 };
 exports.BooksService = BooksService;
 exports.BooksService = BooksService = __decorate([

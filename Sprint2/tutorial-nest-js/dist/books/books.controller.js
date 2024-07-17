@@ -8,6 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BooksController = void 0;
 const common_1 = require("@nestjs/common");
@@ -16,17 +19,47 @@ let BooksController = class BooksController {
     constructor(booksService) {
         this.booksService = booksService;
     }
+    sort(id) {
+        return this.booksService.sort(id);
+    }
     findAll() {
         return this.booksService.findAll();
     }
+    findBook(bookId) {
+        return this.booksService.findBook(bookId);
+    }
+    ObtenerNombre(nombre) {
+        return this.booksService.ObtenerNombre(nombre);
+    }
 };
 exports.BooksController = BooksController;
+__decorate([
+    (0, common_1.Get)('sort/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], BooksController.prototype, "sort", null);
 __decorate([
     (0, common_1.Get)(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
 ], BooksController.prototype, "findAll", null);
+__decorate([
+    (0, common_1.Get)(':bookId'),
+    __param(0, (0, common_1.Param)('bookId')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], BooksController.prototype, "findBook", null);
+__decorate([
+    (0, common_1.Get)('nombre/:nombre'),
+    __param(0, (0, common_1.Param)('nombre')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], BooksController.prototype, "ObtenerNombre", null);
 exports.BooksController = BooksController = __decorate([
     (0, common_1.Controller)('api/v1/books'),
     __metadata("design:paramtypes", [books_service_1.BooksService])

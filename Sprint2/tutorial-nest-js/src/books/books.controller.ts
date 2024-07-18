@@ -26,4 +26,7 @@ export class BooksController {
   ObtenerNombre(@Param('nombre') nombre:string) {
     return this.booksService.ObtenerNombre(nombre);
   }
+
+  //CRUD
+  
 }

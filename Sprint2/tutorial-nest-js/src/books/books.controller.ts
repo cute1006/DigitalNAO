@@ -1,6 +1,7 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { BooksService } from './books.service';
-import { BookDto } from './bookDto';
+import { BookDto } from './dto/bookDto';
+import { UpdateBookDto } from './dto/updateDto';
 
 @Controller('api/v1/books')
 export class BooksController {
@@ -10,7 +11,7 @@ export class BooksController {
   @Get('sort/:id') 
     sort(@Param('id') id :number) { 
       return this.booksService.sort(id); 
-  }
+    }
 @Get() 
   findAll() { 
     return this.booksService.findAll(); 
@@ -30,10 +31,26 @@ export class BooksController {
 
 
   //crud
+  //read
+  @Get('readId/:readId')
+  readBook(@Param('readId') readId : number){
+    return this.booksService.readBook(readId)
+  }
   //create
   @Post()
   createBook(@Body() dto :BookDto){
     return this.booksService.createBook(dto);
   }
+  //Modificacion
+  @Put('/:bookId')
+  updateBook(@Param('bookId') bookId: number,  @Body() dto :UpdateBookDto){
+    return this.booksService.updateBook(bookId , dto);
+  }
+  //eliminar
+  @Delete('/:id')
+    deleteBook(@Param('id') id : number ) {
+        return this.booksService.deleteBook(id);
+    }
+  
 
 }

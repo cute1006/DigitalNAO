@@ -12,12 +12,24 @@ const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
 const books_service_1 = require("./books/books.service");
 const books_controller_1 = require("./books/books.controller");
+const typeorm_1 = require("@nestjs/typeorm");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [],
+        imports: [
+            typeorm_1.TypeOrmModule.forRoot({
+                type: 'postgres',
+                host: 'localhost',
+                port: 5432,
+                database: 'book',
+                username: 'postgres',
+                password: '123',
+                entities: ['dist/**/*.entity{.ts,.js}'],
+                synchronize: true
+            })
+        ],
         controllers: [app_controller_1.AppController, books_controller_1.BooksController],
         providers: [app_service_1.AppService, books_service_1.BooksService],
     })

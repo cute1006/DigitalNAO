@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { BookDto } from './bookDto';
 
 @Injectable()
 export class BooksService {
@@ -18,7 +19,7 @@ export class BooksService {
         return `El id es: ${id}`;
     }
 
-    createBook(newBook: any) {
+    createBook(newBook: BookDto) {
         return newBook;
     }
 }

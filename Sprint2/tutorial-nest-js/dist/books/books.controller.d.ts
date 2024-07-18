@@ -1,4 +1,5 @@
 import { BooksService } from './books.service';
+import { BookDto } from './bookDto';
 export declare class BooksController {
     private booksService;
     constructor(booksService: BooksService);
@@ -6,4 +7,5 @@ export declare class BooksController {
     findAll(): any;
     findBook(bookId: string): string;
     ObtenerNombre(nombre: string): string;
+    createBook(dto: BookDto): BookDto;
 }

@@ -1,5 +1,6 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { BooksService } from './books.service';
+import { BookDto } from './bookDto';
 
 @Controller('api/v1/books')
 export class BooksController {
@@ -25,5 +26,12 @@ export class BooksController {
   @Get('nombre/:nombre')
   ObtenerNombre(@Param('nombre') nombre:string) {
     return this.booksService.ObtenerNombre(nombre);
+  }
+
+  //crud
+  //create
+  @Post()
+  createBook(@Body() dto :BookDto){
+    return this.booksService.createBook(dto);
   }
 }

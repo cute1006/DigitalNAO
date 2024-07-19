@@ -57,4 +57,5 @@ DigitalNAO
      tablas creadas: 2
          *auth
          *books
+  NOTA: Pequeña confusion con las creacion de las tablas (la idea la creacion de los tres modulos:Ventas,Inventario y Atencion al cliente.)Pero hace la peticion del api
       

@@ -10,9 +10,9 @@ exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
 const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
-const books_service_1 = require("./books/books.service");
-const books_controller_1 = require("./books/books.controller");
 const typeorm_1 = require("@nestjs/typeorm");
+const auth_module_1 = require("./auth/auth.module");
+const books_module_1 = require("./books/books.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -28,10 +28,12 @@ exports.AppModule = AppModule = __decorate([
                 password: '123',
                 entities: ['dist/**/*.entity{.ts,.js}'],
                 synchronize: true
-            })
+            }),
+            auth_module_1.AuthModule,
+            books_module_1.BooksModule
         ],
-        controllers: [app_controller_1.AppController, books_controller_1.BooksController],
-        providers: [app_service_1.AppService, books_service_1.BooksService],
+        controllers: [app_controller_1.AppController],
+        providers: [app_service_1.AppService],
     })
 ], AppModule);
 //# sourceMappingURL=app.module.js.map

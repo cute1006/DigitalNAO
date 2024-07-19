@@ -2,10 +2,18 @@ import { Injectable } from '@nestjs/common';
 import { BookDto } from './dto/bookDto';
 import { UpdateBookDto } from './dto/updateDto';
 import { Book } from './book.class';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Books } from './entities/book.entity';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class BooksService {
-
+  constructor(
+    //conexion a la tabla book
+    @InjectRepository(Books)
+    private readonly userRepository: Repository<Books>,
+    
+  ) {}
     books: Book[] = [ 
         {
           id: 1,
@@ -47,8 +55,17 @@ export class BooksService {
          return this.books[id-1];
     }
 
-    createBook(newBook: BookDto) {
-        return newBook;
+    async createBook(newBook: BookDto) {
+      const books: Books = new Books();
+      //referencia entity   //dto
+      books.titulo = newBook.titulo
+      books.descripcion = newBook.descripcion
+      books.autor = newBook.autor
+      books.publicacion = newBook.publicacion
+      books.paginas = newBook.paginas
+      const bookInsert = await this.userRepository.save(books);
+      
+        return bookInsert;
     }
 
     updateBook(id : number ,book: UpdateBookDto) {

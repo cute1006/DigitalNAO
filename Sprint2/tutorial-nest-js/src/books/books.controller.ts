@@ -1,7 +1,8 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, UseGuards } from '@nestjs/common';
 import { BooksService } from './books.service';
 import { BookDto } from './dto/bookDto';
 import { UpdateBookDto } from './dto/updateDto';
+import { AuthGuard } from 'src/guard/auth.guard';
 
 @Controller('api/v1/books')
 export class BooksController {
@@ -37,6 +38,7 @@ export class BooksController {
     return this.booksService.readBook(readId)
   }
   //create
+  @UseGuards(AuthGuard)
   @Post()
   createBook(@Body() dto :BookDto){
     return this.booksService.createBook(dto);

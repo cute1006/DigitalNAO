@@ -17,7 +17,44 @@ DigitalNAO
   Sprint2
      screenshot --van todas las capturas de pantallas relacionada al Sprint2
      tutorial-nest-js --carpeta del nuevo proyecto
+        dist
+        node_module
+        src
+           auth
+              dto
+                create-auth
+                login --referencia del dto para token
+                update
+              entities
+                 auth.entity.ts --hace referncia a la creacion de la tabla en bd
+              auth.controller.ts
+              auth.module.ts
+              auth.service.ts
+           books
+             dto
+                bookDto.ts
+                updateDto.ts
+              entities
+                 book.entity.ts
+              books.controller.ts
+              books.module.ts
+              books.service.ts
+            constante
+                constante.ts --Hace referencia al token situado en el aith service
+            guard
+              auth.guard.ts -- aqui se encontra la logica de JWT
+            app.controller.ts
+            app.module.ts
+            app.service.ts    estos tres archivos de aca por propiamente del proyecto principal 
 
+          
   NOTA: --referente a los numeros de las versiones de los archivos solo hubo una unica version de los archivos como tal.
    Dentro del archivo pdf estan los enlaces de roadmap y backlog junto con el enlace del repositorio. 
+  
+  NOTA: Para el sprint2 se utilizo una base de datos de postgres
+     con el usuario: postgres
+     contraseña: 123
+     tablas creadas: 2
+         *auth
+         *books
       

@@ -9,7 +9,7 @@ export declare class BooksController {
     findBook(bookId: string): string;
     ObtenerNombre(nombre: string): string;
     readBook(readId: number): import("./book.class").Book;
-    createBook(dto: BookDto): BookDto;
+    createBook(dto: BookDto): Promise<import("./entities/book.entity").Books>;
     updateBook(bookId: number, dto: UpdateBookDto): UpdateBookDto | "El id es requerido";
     deleteBook(id: number): string;
 }

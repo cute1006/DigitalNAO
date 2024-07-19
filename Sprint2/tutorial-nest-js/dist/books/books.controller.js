@@ -17,6 +17,7 @@ const common_1 = require("@nestjs/common");
 const books_service_1 = require("./books.service");
 const bookDto_1 = require("./dto/bookDto");
 const updateDto_1 = require("./dto/updateDto");
+const auth_guard_1 = require("../guard/auth.guard");
 let BooksController = class BooksController {
     constructor(booksService) {
         this.booksService = booksService;
@@ -82,6 +83,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], BooksController.prototype, "readBook", null);
 __decorate([
+    (0, common_1.UseGuards)(auth_guard_1.AuthGuard),
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),

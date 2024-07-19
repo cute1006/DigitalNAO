@@ -4,6 +4,8 @@ import { AppService } from './app.service';
 import { BooksService } from './books/books.service';
 import { BooksController } from './books/books.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { AuthModule } from './auth/auth.module';
+import { BooksModule } from './books/books.module';
 
 @Module({
   imports: [
@@ -18,9 +20,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
         entities: ['dist/**/*.entity{.ts,.js}'],
         synchronize: true
       }
-    )
+    ),
+    AuthModule,
+    BooksModule
   ],
-  controllers: [AppController, BooksController],
-  providers: [AppService, BooksService],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}

@@ -3,7 +3,10 @@ import { BooksService } from './books.service';
 import { BookDto } from './dto/bookDto';
 import { UpdateBookDto } from './dto/updateDto';
 import { AuthGuard } from 'src/guard/auth.guard';
+import { ApiBasicAuth, ApiBearerAuth, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 
+@ApiBearerAuth()
+@ApiTags('books')
 @Controller('api/v1/books')
 export class BooksController {
     constructor(private booksService: BooksService) {}
@@ -40,6 +43,8 @@ export class BooksController {
   //create
   @UseGuards(AuthGuard)
   @Post()
+  @ApiResponse({status:403,description:'Sin autorizacion'})
+  @ApiOperation({summary: 'Metodo para crear un nuevo libro'})
   createBook(@Body() dto :BookDto){
     return this.booksService.createBook(dto);
   }

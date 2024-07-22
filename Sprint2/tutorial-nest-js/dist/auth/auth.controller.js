@@ -18,6 +18,7 @@ const auth_service_1 = require("./auth.service");
 const create_auth_dto_1 = require("./dto/create-auth.dto");
 const update_auth_dto_1 = require("./dto/update-auth.dto");
 const login_dto_1 = require("./dto/login.dto");
+const swagger_1 = require("@nestjs/swagger");
 let AuthController = class AuthController {
     constructor(authService) {
         this.authService = authService;
@@ -78,6 +79,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], AuthController.prototype, "remove", null);
 __decorate([
+    (0, swagger_1.ApiOperation)({ summary: 'Registar una nueva autorizazion' }),
     (0, common_1.Post)('/login'),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),

@@ -18,6 +18,7 @@ const books_service_1 = require("./books.service");
 const bookDto_1 = require("./dto/bookDto");
 const updateDto_1 = require("./dto/updateDto");
 const auth_guard_1 = require("../guard/auth.guard");
+const swagger_1 = require("@nestjs/swagger");
 let BooksController = class BooksController {
     constructor(booksService) {
         this.booksService = booksService;
@@ -85,6 +86,8 @@ __decorate([
 __decorate([
     (0, common_1.UseGuards)(auth_guard_1.AuthGuard),
     (0, common_1.Post)(),
+    (0, swagger_1.ApiResponse)({ status: 403, description: 'Sin autorizacion' }),
+    (0, swagger_1.ApiOperation)({ summary: 'Metodo para crear un nuevo libro' }),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [bookDto_1.BookDto]),
@@ -106,6 +109,8 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], BooksController.prototype, "deleteBook", null);
 exports.BooksController = BooksController = __decorate([
+    (0, swagger_1.ApiBearerAuth)(),
+    (0, swagger_1.ApiTags)('books'),
     (0, common_1.Controller)('api/v1/books'),
     __metadata("design:paramtypes", [books_service_1.BooksService])
 ], BooksController);

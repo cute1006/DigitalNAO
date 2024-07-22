@@ -3,6 +3,7 @@ import { AuthService } from './auth.service';
 import { CreateAuthDto } from './dto/create-auth.dto';
 import { UpdateAuthDto } from './dto/update-auth.dto';
 import { LoginDto } from './dto/login.dto';
+import { ApiOperation } from '@nestjs/swagger';
 
 @Controller('api/v1/auth')
 export class AuthController {
@@ -32,7 +33,7 @@ export class AuthController {
   remove(@Param('id') id: string) {
     return this.authService.remove(+id);
   }
-
+  @ApiOperation({summary: 'Registar una nueva autorizazion'})
   @Post('/login')
   login(@Body()login : LoginDto){
     return this.authService.login(login)

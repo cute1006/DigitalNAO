@@ -2,7 +2,7 @@ import { Body, Controller, Delete, Get, Param, Post, Put, UseGuards } from '@nes
 import { BooksService } from './books.service';
 import { BookDto } from './dto/bookDto';
 import { UpdateBookDto } from './dto/updateDto';
-import { AuthGuard } from 'src/guard/auth.guard';
+import { AuthGuard } from '../guard/auth.guard';
 import { ApiBasicAuth, ApiBearerAuth, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 
 @ApiBearerAuth()
@@ -36,7 +36,10 @@ export class BooksController {
 
   //crud
   //read
+  @UseGuards(AuthGuard)
+  @ApiResponse({status:403,description:'Sin autorizacion'})
   @Get('readId/:readId')
+  @ApiOperation({summary: 'Metodo para busqueda un libro'})
   readBook(@Param('readId') readId : number){
     return this.booksService.readBook(readId)
   }
@@ -49,12 +52,18 @@ export class BooksController {
     return this.booksService.createBook(dto);
   }
   //Modificacion
+  @UseGuards(AuthGuard)
   @Put('/:bookId')
+  @ApiResponse({status:403,description:'Sin autorizacion'})
+  @ApiOperation({summary: 'Metodo para actualizar un libro'})
   updateBook(@Param('bookId') bookId: number,  @Body() dto :UpdateBookDto){
     return this.booksService.updateBook(bookId , dto);
   }
   //eliminar
+  @UseGuards(AuthGuard)
   @Delete('/:id')
+  @ApiResponse({status:403,description:'Sin autorizacion'})
+  @ApiOperation({summary: 'Metodo para eliminar el libro'})
     deleteBook(@Param('id') id : number ) {
         return this.booksService.deleteBook(id);
     }

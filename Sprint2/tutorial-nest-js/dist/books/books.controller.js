@@ -77,7 +77,10 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], BooksController.prototype, "ObtenerNombre", null);
 __decorate([
+    (0, common_1.UseGuards)(auth_guard_1.AuthGuard),
+    (0, swagger_1.ApiResponse)({ status: 403, description: 'Sin autorizacion' }),
     (0, common_1.Get)('readId/:readId'),
+    (0, swagger_1.ApiOperation)({ summary: 'Metodo para busqueda un libro' }),
     __param(0, (0, common_1.Param)('readId')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
@@ -94,7 +97,10 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], BooksController.prototype, "createBook", null);
 __decorate([
+    (0, common_1.UseGuards)(auth_guard_1.AuthGuard),
     (0, common_1.Put)('/:bookId'),
+    (0, swagger_1.ApiResponse)({ status: 403, description: 'Sin autorizacion' }),
+    (0, swagger_1.ApiOperation)({ summary: 'Metodo para actualizar un libro' }),
     __param(0, (0, common_1.Param)('bookId')),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -102,7 +108,10 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], BooksController.prototype, "updateBook", null);
 __decorate([
+    (0, common_1.UseGuards)(auth_guard_1.AuthGuard),
     (0, common_1.Delete)('/:id'),
+    (0, swagger_1.ApiResponse)({ status: 403, description: 'Sin autorizacion' }),
+    (0, swagger_1.ApiOperation)({ summary: 'Metodo para eliminar el libro' }),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),

@@ -1,4 +1,4 @@
-export declare class CreateBookDto {
+export declare class ReadBook {
     readonly titulo: string;
     readonly descripcion: string;
     readonly autor: string;

@@ -1,17 +1,19 @@
-import { Injectable } from '@nestjs/common';
-import { BookDto } from './dto/bookDto';
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { CreateBookDto } from './dto/bookDto';
 import { UpdateBookDto } from './dto/updateDto';
 import { Book } from './book.class';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Books } from './entities/book.entity';
 import { Repository } from 'typeorm';
+import { promises } from 'dns';
+
 
 @Injectable()
 export class BooksService {
   constructor(
     //conexion a la tabla book
     @InjectRepository(Books)
-    private readonly userRepository: Repository<Books>,
+    private readonly bookRepository: Repository<Books>,
     
   ) {}
     books: Book[] = [ 
@@ -51,11 +53,18 @@ export class BooksService {
     }
     //crud
 
-    readBook(id:number){
-         return this.books[id-1];
-    }
+    async readBook(id_book:number): Promise<Books>{
+      const bo: Books = await this.bookRepository.findOne({where: {id_book} } );
+      if (!bo){
+        throw new NotFoundException("No se encontro Ningun libro");
+      }
+      return bo;
+        // return await this.bookRepository.find()
+         //this.books[id-1];
+    
+  }
 
-    async createBook(newBook: BookDto) {
+    async createBook(newBook: CreateBookDto) {
       const books: Books = new Books();
       //referencia entity   //dto
       books.titulo = newBook.titulo
@@ -63,23 +72,50 @@ export class BooksService {
       books.autor = newBook.autor
       books.publicacion = newBook.publicacion
       books.paginas = newBook.paginas
-      const bookInsert = await this.userRepository.save(books);
+      const bookInsert = await this.bookRepository.save(books);
       
         return bookInsert;
     }
 
-    updateBook(id : number ,book: UpdateBookDto) {
-        console.log(book.id)
+    async updateBook(id : number ,book: UpdateBookDto) {
+        /*console.log(book.id)
         if (book.id != undefined ){
             return book;
         }
         else{
             return 'El id es requerido'
-        }
+        }*/
+
+            const actualizar: Books = new Books(); 
+            //referencia entity   //dto
+            actualizar.id_book    =book.id
+            actualizar.titulo     =book.titulo
+            actualizar.descripcion=book.descripcion
+            actualizar.autor      =book.autor
+            actualizar.publicacion=book.publicacion
+            actualizar.paginas    =book.paginas
+            const updatebook = await this.bookRepository.update(id,actualizar)
+            return updatebook;
+
     }
 
-    deleteBook(id :number){
-        return `El Libro con el Id : ${id} se ha eliminado con exito`
+    async deleteBook(id_book: number):Promise<Books> {
+     
+      const deletebo = await this.bookRepository.findOne({where: {id_book} } );
+      if (!deletebo) {
+        throw new NotFoundException(`No se encuentra el Libro ${id_book}`);
+      }
+      
+      return this.bookRepository.remove(deletebo);
     }
+      
+      
+      //return `Se ha eliminado el book con el id: ${id} `;
+          //await this.bookRepository.remove(id);
+       
+        
+      
+         
+    
 
 }

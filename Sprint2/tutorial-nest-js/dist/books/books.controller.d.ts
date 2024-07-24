@@ -1,6 +1,6 @@
 import { BooksService } from './books.service';
-import { BookDto } from './dto/bookDto';
 import { UpdateBookDto } from './dto/updateDto';
+import { CreateBookDto } from './dto/bookDto';
 export declare class BooksController {
     private booksService;
     constructor(booksService: BooksService);
@@ -8,8 +8,8 @@ export declare class BooksController {
     findAll(): any;
     findBook(bookId: string): string;
     ObtenerNombre(nombre: string): string;
-    readBook(readId: number): import("./book.class").Book;
-    createBook(dto: BookDto): Promise<import("./entities/book.entity").Books>;
-    updateBook(bookId: number, dto: UpdateBookDto): UpdateBookDto | "El id es requerido";
-    deleteBook(id: number): string;
+    readBook(readId: number): Promise<import("./entities/book.entity").Books>;
+    createBook(dto: CreateBookDto): Promise<import("./entities/book.entity").Books>;
+    updateBook(bookId: number, dto: UpdateBookDto): Promise<import("typeorm").UpdateResult>;
+    deleteBook(id: number): Promise<import("./entities/book.entity").Books>;
 }

@@ -18,8 +18,8 @@ const typeorm_1 = require("@nestjs/typeorm");
 const book_entity_1 = require("./entities/book.entity");
 const typeorm_2 = require("typeorm");
 let BooksService = class BooksService {
-    constructor(userRepository) {
-        this.userRepository = userRepository;
+    constructor(bookRepository) {
+        this.bookRepository = bookRepository;
         this.books = [
             {
                 id: 1,
@@ -51,8 +51,12 @@ let BooksService = class BooksService {
     sort(id) {
         return `El id es: ${id}`;
     }
-    readBook(id) {
-        return this.books[id - 1];
+    async readBook(id_book) {
+        const bo = await this.bookRepository.findOne({ where: { id_book } });
+        if (!bo) {
+            throw new common_1.NotFoundException("No se encontro Ningun libro");
+        }
+        return bo;
     }
     async createBook(newBook) {
         const books = new book_entity_1.Books();
@@ -61,20 +65,26 @@ let BooksService = class BooksService {
         books.autor = newBook.autor;
         books.publicacion = newBook.publicacion;
         books.paginas = newBook.paginas;
-        const bookInsert = await this.userRepository.save(books);
+        const bookInsert = await this.bookRepository.save(books);
         return bookInsert;
     }
-    updateBook(id, book) {
-        console.log(book.id);
-        if (book.id != undefined) {
-            return book;
-        }
-        else {
-            return 'El id es requerido';
-        }
+    async updateBook(id, book) {
+        const actualizar = new book_entity_1.Books();
+        actualizar.id_book = book.id;
+        actualizar.titulo = book.titulo;
+        actualizar.descripcion = book.descripcion;
+        actualizar.autor = book.autor;
+        actualizar.publicacion = book.publicacion;
+        actualizar.paginas = book.paginas;
+        const updatebook = await this.bookRepository.update(id, actualizar);
+        return updatebook;
     }
-    deleteBook(id) {
-        return `El Libro con el Id : ${id} se ha eliminado con exito`;
+    async deleteBook(id_book) {
+        const deletebo = await this.bookRepository.findOne({ where: { id_book } });
+        if (!deletebo) {
+            throw new common_1.NotFoundException(`No se encuentra el Libro ${id_book}`);
+        }
+        return this.bookRepository.remove(deletebo);
     }
 };
 exports.BooksService = BooksService;

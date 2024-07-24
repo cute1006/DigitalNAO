@@ -9,31 +9,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreateBookDto = void 0;
+exports.ReadBook = void 0;
 const swagger_1 = require("@nestjs/swagger");
 const class_validator_1 = require("class-validator");
-class CreateBookDto {
+class ReadBook {
 }
-exports.CreateBookDto = CreateBookDto;
+exports.ReadBook = ReadBook;
 __decorate([
     (0, swagger_1.ApiProperty)({ description: 'Titulo del libro:' }),
     (0, class_validator_1.IsString)({ message: 'Titulo del libro' }),
     __metadata("design:type", String)
-], CreateBookDto.prototype, "titulo", void 0);
+], ReadBook.prototype, "titulo", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)({ description: 'Descripcion del libro:' }),
     __metadata("design:type", String)
-], CreateBookDto.prototype, "descripcion", void 0);
+], ReadBook.prototype, "descripcion", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)({ description: 'Autor:' }),
     __metadata("design:type", String)
-], CreateBookDto.prototype, "autor", void 0);
+], ReadBook.prototype, "autor", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)({ description: 'Publicacion:' }),
     __metadata("design:type", String)
-], CreateBookDto.prototype, "publicacion", void 0);
+], ReadBook.prototype, "publicacion", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)({ description: 'Numero de pagina:' }),
     __metadata("design:type", String)
-], CreateBookDto.prototype, "paginas", void 0);
-//# sourceMappingURL=bookDto.js.map
+], ReadBook.prototype, "paginas", void 0);
+//# sourceMappingURL=readbook.js.map

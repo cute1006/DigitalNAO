@@ -1,7 +1,7 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { IsString } from "class-validator";
 
-export class BookDto {
+export class CreateBookDto {
   @ApiProperty({description:'Titulo del libro:'})
   @IsString({message:'Titulo del libro'})//}
     readonly titulo: string;

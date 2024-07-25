@@ -13,6 +13,6 @@ export declare class BooksService {
     sort(id: number): string;
     readBook(id_book: number): Promise<Books>;
     createBook(newBook: CreateBookDto): Promise<Books>;
-    updateBook(id: number, book: UpdateBookDto): Promise<import("typeorm").UpdateResult>;
+    updateBook(id: number, book: UpdateBookDto): Promise<Books>;
     deleteBook(id_book: number): Promise<Books>;
 }

@@ -10,6 +10,6 @@ export declare class BooksController {
     ObtenerNombre(nombre: string): string;
     readBook(readId: number): Promise<import("./entities/book.entity").Books>;
     createBook(dto: CreateBookDto): Promise<import("./entities/book.entity").Books>;
-    updateBook(bookId: number, dto: UpdateBookDto): Promise<import("typeorm").UpdateResult>;
+    updateBook(bookId: number, dto: UpdateBookDto): Promise<import("./entities/book.entity").Books>;
     deleteBook(id: number): Promise<import("./entities/book.entity").Books>;
 }

@@ -74,7 +74,7 @@ export class BooksService {
       books.paginas = newBook.paginas
       const bookInsert = await this.bookRepository.save(books);
       
-        return bookInsert;
+        return  bookInsert;
     }
 
     async updateBook(id : number ,book: UpdateBookDto) {
@@ -87,7 +87,7 @@ export class BooksService {
         }*/
 
             const actualizar: Books = new Books(); 
-            //referencia entity   //dto
+            //referencia entity     //dto
             actualizar.id_book    =book.id
             actualizar.titulo     =book.titulo
             actualizar.descripcion=book.descripcion
@@ -95,7 +95,12 @@ export class BooksService {
             actualizar.publicacion=book.publicacion
             actualizar.paginas    =book.paginas
             const updatebook = await this.bookRepository.update(id,actualizar)
-            return updatebook;
+
+            if(updatebook.affected==0){
+              throw new NotFoundException("No se actualizado el libro");
+            }
+
+            return await this.bookRepository.findOne({where:{id_book:id}});
 
     }
 

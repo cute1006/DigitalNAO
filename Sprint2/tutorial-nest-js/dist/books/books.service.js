@@ -77,7 +77,10 @@ let BooksService = class BooksService {
         actualizar.publicacion = book.publicacion;
         actualizar.paginas = book.paginas;
         const updatebook = await this.bookRepository.update(id, actualizar);
-        return updatebook;
+        if (updatebook.affected == 0) {
+            throw new common_1.NotFoundException("No se actualizado el libro");
+        }
+        return await this.bookRepository.findOne({ where: { id_book: id } });
     }
     async deleteBook(id_book) {
         const deletebo = await this.bookRepository.findOne({ where: { id_book } });

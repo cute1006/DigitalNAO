@@ -10,16 +10,5 @@ export declare class AuthService {
     findOne(id: number): string;
     update(id: number, updateAuthDto: UpdateAuthDto): string;
     remove(id: number): string;
-    login(login: LoginDto): Promise<{
-        success: string;
-        error: any;
-        data: {
-            token: string;
-            user: number;
-        };
-    } | {
-        success: any;
-        error: string;
-        data?: undefined;
-    }>;
+    login(login: LoginDto): Promise<any>;
 }

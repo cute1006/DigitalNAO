@@ -10,16 +10,5 @@ export declare class AuthController {
     findOne(id: string): string;
     update(id: string, updateAuthDto: UpdateAuthDto): string;
     remove(id: string): string;
-    login(login: LoginDto): Promise<{
-        success: string;
-        error: any;
-        data: {
-            token: string;
-            user: number;
-        };
-    } | {
-        success: any;
-        error: string;
-        data?: undefined;
-    }>;
+    login(login: LoginDto): Promise<any>;
 }

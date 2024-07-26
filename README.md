@@ -58,4 +58,9 @@ DigitalNAO
          *auth
          *books
   NOTA: Pequeña confusion con las creacion de las tablas (la idea la creacion de los tres modulos:Ventas,Inventario y Atencion al cliente.)Pero hace la peticion del api
-      
+
+
+NOTA: Enlace del API REST: https://digitalnao.onrender.com/api#/  
+NOTA: En esta version hay dos ramas en el GITHub una donde se desplogo el api llamada main y la segunda se llama book-project 
+donde se aloja el sprint 
+NOTA: En los spec ya estan los test  

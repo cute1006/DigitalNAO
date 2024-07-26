@@ -1,9 +1,0 @@
-ESTO ES LO QUE DEBO DE HACER PARA CREAR UN API
-
-1.Comenzar desarrollando todas las 
-funciones que necesitemos ofreciendo inicialmente la funcionalidad 
-de mostrar simplemente que han sido llamadas.
-
-2.Posteriormente, le iremos añadiendo su 
-lógica real de forma progresiva. Esto nos permite tener inicialmente los componentes 
-y las llamadas funcionando e interactuando sin adentrarnos en la complejidad del dominio.

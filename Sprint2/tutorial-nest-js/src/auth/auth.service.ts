@@ -32,7 +32,7 @@ export class AuthService {
     return `This action removes a #${id} auth`;
   }
   //metodo que se utilizo para la parte del token
-  async login(login : LoginDto){
+  async login(login : LoginDto): Promise<any> {
     try{
       
         const payload = { sub: 1, username: 'mmeza' };

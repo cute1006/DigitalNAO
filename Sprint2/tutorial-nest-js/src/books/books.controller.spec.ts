@@ -85,40 +85,45 @@ describe('BooksController', () => {
      });
    });
 
-  // describe('findOneById', () => {
-  //   it('should return a user by id', async () => {
-  //     const user = new Users();
-  //     user.user_id = 1;
-  //     user.nombre = 'John Doe';
-  //     user.email = 'john@example.com';
+   describe('readBook', () => {
+     it('should return a book by id', async () => {
+      //bookController
+      const bookId: number = 5;
+       const book = new Books();
+       book.id_book = 5;
+       book.titulo = 'Mariposa';
+      book.descripcion = 'La mariposa perdida';
+      book.autor= 'Martinez',
+      book.publicacion='15-12-1995',
+      book.paginas='100'
+       //bookService
+      const response: Books = {id_book: 5,titulo: 'Mariposa', descripcion: 'La mariposa perdida', autor: 'Martinez', publicacion: '15-12-1995', paginas: '100'};
+         //bookService
+       jest.spyOn(service, 'readBook').mockResolvedValue(response);
+        //bookController
+       expect(await controller.readBook(bookId)).toEqual(book);
+     });
+   });
 
-  //     jest.spyOn(service, 'findOneById').mockResolvedValue(user);
 
-  //     expect(await controller.findOneById(1)).toEqual(user);
-  //   });
-  // });
+   describe('deleteBook', () => {
+     it('should delete a book', async () => {
+      const bookId: number = 5;
+      const book = new Books();
+      book.id_book = 5;
+      book.titulo = 'Mariposa';
+      book.descripcion = 'La mariposa perdida';
+      book.autor= 'Martinez',
+      book.publicacion='15-12-1995',
+      book.paginas='100'
 
-  // describe('findAll', () => {
-  //   it('should return an array of users', async () => {
-  //     const user = new Users();
-  //     user.user_id = 1;
-  //     user.nombre = 'John Doe';
-  //     user.email = 'john@example.com';
-
-  //     jest.spyOn(service, 'findAll').mockResolvedValue([user]);
-
-  //     expect(await controller.findAll()).toEqual([user]);
-  //   });
-  // });
-
-  // describe('delete', () => {
-  //   it('should delete a user', async () => {
-  //     const result = { affected: 1 };
-  //     jest.spyOn(service, 'delete').mockResolvedValue(result);
-
-  //     expect(await controller.delete(1)).toEqual(result);
-  //   });
-  // });
+      const response: Books = {id_book: 5,titulo: 'Mariposa', descripcion: 'La mariposa perdida', autor: 'Martinez', publicacion: '15-12-1995', paginas: '100'};
+       //bookService
+       jest.spyOn(service, 'deleteBook').mockResolvedValue(response);
+        //bookController
+       expect(await controller.deleteBook(bookId)).toEqual(book);
+     });
+   });
 
 });
 

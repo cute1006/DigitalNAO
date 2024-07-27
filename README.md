@@ -45,7 +45,9 @@ DigitalNAO
               auth.guard.ts -- aqui se encontra la logica de JWT
             app.controller.ts
             app.module.ts
-            app.service.ts    estos tres archivos de aca por propiamente del proyecto principal 
+            app.service.ts    estos tres archivos de aca por propiamente del proyecto principal
+   Sprint3
+       Entregable.rar -- aqui va la documentacion del sprint3 
 
           
   NOTA: --referente a los numeros de las versiones de los archivos solo hubo una unica version de los archivos como tal.
@@ -62,5 +64,6 @@ DigitalNAO
 
 NOTA: Enlace del API REST: https://digitalnao.onrender.com/api#/  
 NOTA: En esta version hay dos ramas en el GITHub una donde se desplogo el api llamada main y la segunda se llama book-project 
-donde se aloja el sprint 
+donde se aloja  las documentacion de los sprint anteriores el sprint3 que es el actual
 NOTA: En los spec ya estan los test  
+NOTA: En la rama main donde se aloja el proyecto en el app-module va los datos de la bd

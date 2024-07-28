@@ -48,6 +48,8 @@ DigitalNAO
             app.service.ts    estos tres archivos de aca por propiamente del proyecto principal
    Sprint3
        Entregable.rar -- aqui va la documentacion del sprint3 
+       Screenchot --aqui van las imagenes documentando el api
+       archivo pdf con los enlaces de repositorio y carpeta en drive que contiene backlog y roadmap
 
           
   NOTA: --referente a los numeros de las versiones de los archivos solo hubo una unica version de los archivos como tal.
